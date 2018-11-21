@@ -45,7 +45,7 @@ scan_all_bash_scripts_from_single_repository (){
 
 	echo "Scanning... DONE"
 	if [[ -s ${report_file} ]]; then
-		echo "Report file is available on: $report_file"
+		echo "Report file is available on: `pwd`/$report_file"
 	else
 		echo "ShellCheck did not find any comments."
 		rm ${report_file}

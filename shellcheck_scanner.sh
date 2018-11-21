@@ -10,7 +10,7 @@
 
 WRONG_ARGS=1
 WRONG_REPOSITORY=10
-main_dir=`pwd`
+main_dir=$(dirname "$0")
 shellcheck_dir="$main_dir/shellcheck"
 shellcheck_script="$shellcheck_dir/shellcheck"
 clone_urls=()
@@ -86,7 +86,7 @@ check_required_packags (){
 	i=0
 	for package in "${required_packages[@]}"
 	do
-		which $package > /dev/null 
+		which ${package} > /dev/null
 		if ! [ $? = 0 ]
 		then
 		 echo "Error: $package should be installed"
@@ -101,9 +101,9 @@ check_required_packags (){
 }
 
 
-source ./shellcheck_downloader.sh
-source ./github_requests.sh
-source ./script_checker.sh
+source "$main_dir/shellcheck_downloader.sh"
+source "$main_dir/github_requests.sh"
+source "$main_dir/script_checker.sh"
 
 check_required_packags
 download_shellcheck_binary
